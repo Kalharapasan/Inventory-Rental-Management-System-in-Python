@@ -68,17 +68,17 @@ class Rental_Inventory:
         self.var2 = IntVar()
         self.var3 = IntVar()
         self.var4 = IntVar()
-        self.Tax = StringVar()
-        self.SubTotal = StringVar()
-        self.Total = StringVar()
+        self.Tax = StringVar() # Made self.Tax
+        self.SubTotal = StringVar() # Made self.SubTotal
+        self.Total = StringVar() # Made self.Total
         self.Receipt_Ref = StringVar()
 
         # ================================================RightFrame0=================================================
-        # Changed tk.Label to Label and tk.W to W
+        
         self.lblAcctOpen = Label(RightFrame0, font=('arial', 18, 'bold'), text="Account Opened:", padx=2, pady=2, bg="gainsboro")
         self.lblAcctOpen.grid(row=0, column=0, sticky=W)
 
-        # Changed textvariable=AcctOpen to textvariable=self.AcctOpen
+        
         self.cboAcctOpen = ttk.Combobox(RightFrame0, textvariable=self.AcctOpen, state='readonly',
                                         font=('arial', 18, 'bold'), width=19)
         self.cboAcctOpen['values'] = ('', 'Select an option', 'Yes', 'No')
@@ -88,7 +88,7 @@ class Rental_Inventory:
         self.lblNCreR = Label(RightFrame0, font=('arial', 18, 'bold'), text="Next Credit Review:", padx=2, pady=2, bg="gainsboro")
         self.lblNCreR.grid(row=2, column=0, sticky=W)
 
-        # Changed textvariable=NextCreditReview to textvariable=self.NextCreditReview
+       
         self.cboNCreR = ttk.Combobox(RightFrame0, textvariable=self.NextCreditReview, state='readonly',
                                         font=('arial', 18, 'bold'), width=19)
         self.cboNCreR['values'] = ('', 'Select an option', 'Yes', 'No')
@@ -98,7 +98,7 @@ class Rental_Inventory:
         self.lblLCreR = Label(RightFrame0, font=('arial', 18, 'bold'), text="Last Credit Review:", padx=2, pady=2, bg="gainsboro")
         self.lblLCreR.grid(row=3, column=0, sticky=W)
 
-        # Changed textvariable=LastCreditReview to textvariable=self.LastCreditReview
+        
         self.cboLCreR = ttk.Combobox(RightFrame0, textvariable=self.LastCreditReview, state='readonly',
                                         font=('arial', 18, 'bold'), width=19)
         self.cboLCreR['values'] = ('', 'Select an option', 'Yes', 'No')
@@ -108,7 +108,7 @@ class Rental_Inventory:
         self.lblDateRev = Label(RightFrame0, font=('arial', 18, 'bold'), text="Date Review:", padx=2, pady=2, bg="gainsboro")
         self.lblDateRev.grid(row=4, column=0, sticky=W)
 
-        # Changed textvariable=DateRev to textvariable=self.DateRev
+        
         self.cboDateRev = ttk.Combobox(RightFrame0, textvariable=self.DateRev, state='readonly',
                                         font=('arial', 18, 'bold'), width=19)
         self.cboDateRev['values'] = ('', 'Select an option', 'Yes', 'No')
@@ -116,8 +116,30 @@ class Rental_Inventory:
         self.cboDateRev.grid(row=4, column=1, pady=2)
 
         # ================================================RightFrame1=================================================
+        self.txtReceipt = Text(RightFrame1, pady=2, height=14, width=71, font=('arial', 9, 'bold'))
+        self.txtReceipt.grid(row=0, column=0, pady=2)
 
         # ================================================RightFrame2=================================================
+        self.lblTax = Label(RightFrame2, font=('arial', 18, 'bold'), text="Tax", padx=4, pady=1, fg="black", bg="gainsboro")
+        self.lblTax.grid(row=0, column=0, sticky=W)
+        
+        self.txtTax = Entry(RightFrame2, textvariable=self.Tax, font=('arial', 16, 'bold'), bd=8,
+                            fg="black", width=30, justify=LEFT)
+        self.txtTax.grid(row=0, column=1, pady=1, padx=4)
+
+        self.lblSubTotal = Label(RightFrame2, font=('arial', 18, 'bold'), text="Sub Total", padx=4, pady=1, fg="black", bg="gainsboro")
+        self.lblSubTotal.grid(row=1, column=0, sticky=W)
+        
+        self.txtSubTotal = Entry(RightFrame2, textvariable=self.SubTotal, font=('arial', 16, 'bold'), bd=8,
+                                fg="black", width=30, justify=LEFT)
+        self.txtSubTotal.grid(row=1, column=1, pady=1, padx=4)
+
+        self.lblTotal = Label(RightFrame2, font=('arial', 18, 'bold'), text="Total", padx=4, pady=1, fg="black", bg="gainsboro")
+        self.lblTotal.grid(row=2, column=0, sticky=W)
+        
+        self.txtTotal = Entry(RightFrame2, textvariable=self.Total, font=('arial', 16, 'bold'), bd=8,
+                            fg="black", width=30, justify=LEFT)
+        self.txtTotal.grid(row=2, column=1, pady=1, padx=4)
 
         # ================================================LeftFrame0==================================================
 
