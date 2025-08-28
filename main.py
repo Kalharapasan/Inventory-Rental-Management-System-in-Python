@@ -1,12 +1,13 @@
-from tkinter import *
+import tkinter as tk
 from tkinter import ttk
 import random
 import tkinter.messagebox
 from tkinter import messagebox
 import datetime
 
-class Renttal_Inventory:
+class Rental_Inventory:
     
+
     def __init__(self, root):
         self.root = root
         self.root.title("Rental Inventory Management System") 
@@ -14,66 +15,65 @@ class Renttal_Inventory:
         self.root.configure(background='gainsboro')
 
         #=======================Frame============================================#
-        MainFrame = Frame(self.root, bd=20,width=1350,height=700, relief=RIDGE, bg='black')
+        MainFrame = tk.Frame(self.root, bd=20,width=1350,height=700, relief=tk.RIDGE, bg='black')
         MainFrame.grid()
 
-        LeftFrame = Frame(MainFrame, bd=10,width=750,height=600, relief=RIDGE, bg='black')
-        LeftFrame.pack(side=LEFT)
+        LeftFrame = tk.Frame(MainFrame, bd=10,width=750,height=600, relief=tk.RIDGE, bg='black')
+        LeftFrame.pack(side=tk.LEFT)
 
-        RightFrame = Frame(MainFrame, bd=10,width=560,height=600, relief=RIDGE, bg='black')
-        RightFrame.pack(side=RIGHT)
+        RightFrame = tk.Frame(MainFrame, bd=10,width=560,height=600, relief=tk.RIDGE, bg='black')
+        RightFrame.pack(side=tk.RIGHT)
 
         # ====================Div_Frame=================================================#
-        LeftFrame0 = Frame(LeftFrame, bd=5, width=712, height=143, padx=5, bg="gainsboro", relief=RIDGE)
+        LeftFrame0 = tk.Frame(LeftFrame, bd=5, width=712, height=143, padx=5, bg="gainsboro", relief=tk.RIDGE)
         LeftFrame0.grid(row=0, column=0)
-        LeftFrame1 = Frame(LeftFrame, bd=5, width=712, height=170, padx=5, bg="gainsboro", relief=RIDGE)
+        LeftFrame1 = tk.Frame(LeftFrame, bd=5, width=712, height=170, padx=5, bg="gainsboro", relief=tk.RIDGE)
         LeftFrame1.grid(row=1, column=0)
-        LeftFrame2 = Frame(LeftFrame, bd=5, width=712, height=168, padx=5, bg="gainsboro", relief=RIDGE)
+        LeftFrame2 = tk.Frame(LeftFrame, bd=5, width=712, height=168, padx=5, bg="gainsboro", relief=tk.RIDGE)
         LeftFrame2.grid(row=2, column=0)
-        LeftFrame3 = Frame(LeftFrame, bd=5, width=712, height=95, padx=5, bg="gainsboro", relief=RIDGE)
+        LeftFrame3 = tk.Frame(LeftFrame, bd=5, width=712, height=95, padx=5, bg="gainsboro", relief=tk.RIDGE)
         LeftFrame3.grid(row=3, column=0)
 
-        RightFrame0 = Frame(RightFrame, bd=5, width=522, height=200, padx=5, bg="gainsboro", relief=RIDGE)
+        RightFrame0 = tk.Frame(RightFrame, bd=5, width=522, height=200, padx=5, bg="gainsboro", relief=tk.RIDGE)
         RightFrame0.grid(row=0, column=0)
-        RightFrame1 = Frame(RightFrame, bd=5, width=522, height=280, padx=5, bg="gainsboro", relief=RIDGE)
+        RightFrame1 = tk.Frame(RightFrame, bd=5, width=522, height=280, padx=5, bg="gainsboro", relief=tk.RIDGE)
         RightFrame1.grid(row=1, column=0)
-        RightFrame2 = Frame(RightFrame, bd=5, width=522, height=95, padx=0, bg="gainsboro", relief=RIDGE)
+        RightFrame2 = tk.Frame(RightFrame, bd=5, width=522, height=95, padx=0, bg="gainsboro", relief=tk.RIDGE)
         RightFrame2.grid(row=2, column=0)
 
-       
         # ================================================Variables=================================================
 
-        AcctOpen = StringVar()
-        AppDate = StringVar()
-        NextCreditReview = StringVar()
-        LastCreditReview = StringVar()
-        DateRev = StringVar()
-        ProdCode = StringVar()
-        ProdType = StringVar()
-        NoDays = StringVar()
-        CostPDay = StringVar()
-        CreLimit = StringVar()
-        CreCheck = StringVar()
-        SettDueDay = StringVar()
-        PaymentD = StringVar()
-        Discount = StringVar()
-        Deposit = StringVar()
-        PayDueDay = StringVar()
-        PaymentM = StringVar()
+        AcctOpen = tk.StringVar()
+        AppDate = tk.StringVar()
+        NextCreditReview = tk.StringVar()
+        LastCreditReview = tk.StringVar()
+        DateRev = tk.StringVar()
+        ProdCode = tk.StringVar()
+        ProdType = tk.StringVar()
+        NoDays = tk.StringVar()
+        CostPDay = tk.StringVar()
+        CreLimit = tk.StringVar()
+        CreCheck = tk.StringVar()
+        SettDueDay = tk.StringVar()
+        PaymentD = tk.StringVar()
+        Discount = tk.StringVar()
+        Deposit = tk.StringVar()
+        PayDueDay = tk.StringVar()
+        PaymentM = tk.StringVar()
 
-        var1 = IntVar()
-        var2 = IntVar()
-        var3 = IntVar()
-        var4 = IntVar()
-        Tax = StringVar()
-        SubTotal = StringVar()
-        Total = StringVar()
-        Receipt_Ref = StringVar()
+        var1 = tk.IntVar()
+        var2 = tk.IntVar()
+        var3 = tk.IntVar()
+        var4 = tk.IntVar()
+        Tax = tk.StringVar()
+        SubTotal = tk.StringVar()
+        Total = tk.StringVar()
+        Receipt_Ref = tk.StringVar()
 
         # ================================================RightFrame0=================================================
-          
-        self.lblAcctOpen = Label(RightFrame0, font=('arial', 18, 'bold'), text="Account Opened:", padx=2, pady=2, bg="gainsboro")
-        self.lblAcctOpen.grid(row=0, column=0, sticky=W)
+
+        self.lblAcctOpen = tk.Label(RightFrame0, font=('arial', 18, 'bold'), text="Account Opened:", padx=2, pady=2, bg="gainsboro")
+        self.lblAcctOpen.grid(row=0, column=0, sticky=tk.W)
 
         self.cboAcctOpen = ttk.Combobox(RightFrame0, textvariable=AcctOpen, state='readonly',
                                         font=('arial', 18, 'bold'), width=19)
@@ -99,7 +99,7 @@ class Renttal_Inventory:
 
 
 if __name__=='__main__':
-    root=Tk()
-    application =Renttal_Inventory(root)
+    root = tk.Tk()
+    application = Rental_Inventory(root)
     root.mainloop()
 
