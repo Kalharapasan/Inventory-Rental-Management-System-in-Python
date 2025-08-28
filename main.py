@@ -81,6 +81,42 @@ class Rental_Inventory:
         self.cboAcctOpen.current(0)
         self.cboAcctOpen.grid(row=0, column=1, pady=2)
 
+        self.lblNCreR = Label(RightFrame0, font=('arial', 18, 'bold'), text="Next Credit Review:", padx=2, pady=2, bg="gainsboro")
+        self.lblNCreR.grid(row=2, column=0, sticky=W)
+
+        self.cboNCreR = ttk.Combobox(RightFrame0, textvariable=NextCreditReview, state='readonly',
+                                        font=('arial', 18, 'bold'), width=19)
+        self.cboNCreR['value'] = ('', 'Select an option', 'Yes', 'No')
+        self.cboNCreR.current(0)
+        self.cboNCreR.grid(row=2, column=1, pady=2)
+
+        self.lblLCreR = Label(RightFrame0, font=('arial', 18, 'bold'), text="Last Credit Review:", padx=2, pady=2, bg="gainsboro")
+        self.lblLCreR.grid(row=3, column=0, sticky=W)
+
+        self.cboLCreR = ttk.Combobox(RightFrame0, textvariable=LastCreditReview, state='readonly',
+                                        font=('arial', 18, 'bold'), width=19)
+        self.cboLCreR['value'] = ('', 'Select an option', 'Yes', 'No')
+        self.cboLCreR.current(0)
+        self.cboLCreR.grid(row=3, column=1, pady=2)
+
+        self.lblDateRev = Label(RightFrame0, font=('arial', 18, 'bold'), text="Date Review:", padx=2, pady=2, bg="gainsboro")
+        self.lblDateRev.grid(row=4, column=0, sticky=W)
+
+        self.cboLCreR = ttk.Combobox(RightFrame0, textvariable=LastCreditReview, state='readonly',
+                                font=('arial', 18, 'bold'), width=19)
+        self.cboLCreR['value'] = ('', 'Select an option', 'Yes', 'No')
+        self.cboLCreR.current(0)
+        self.cboLCreR.grid(row=3, column=1, pady=2)
+
+        self.lblDateRev = Label(RightFrame0, font=('arial', 18, 'bold'), text="Date Review:", padx=2, pady=2, bg="gainsboro")
+        self.lblDateRev.grid(row=4, column=0, sticky=W)
+
+        self.cboDateRev = ttk.Combobox(RightFrame0, textvariable=DateRev, state='readonly',
+                                        font=('arial', 18, 'bold'), width=19)
+        self.cboDateRev['value'] = ('', 'Select an option', 'Yes', 'No')
+        self.cboDateRev.current(0)
+        self.cboDateRev.grid(row=4, column=1, pady=2)
+
         # ================================================RightFrame1=================================================
 
         # ================================================RightFrame2=================================================
