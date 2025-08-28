@@ -41,7 +41,7 @@ class Renttal_Inventory:
         RightFrame2.grid(row=2, column=0)
 
        
-        # ================================================RightFrame0=================================================
+        # ================================================Variables=================================================
 
         AcctOpen = StringVar()
         AppDate = StringVar()
@@ -70,6 +70,16 @@ class Renttal_Inventory:
         Total = StringVar()
         Receipt_Ref = StringVar()
 
+        # ================================================RightFrame0=================================================
+          
+        self.lblAcctOpen = Label(RightFrame0, font=('arial', 18, 'bold'), text="Account Opened:", padx=2, pady=2, bg="gainsboro")
+        self.lblAcctOpen.grid(row=0, column=0, sticky=W)
+
+        self.cboAcctOpen = ttk.Combobox(RightFrame0, textvariable=AcctOpen, state='readonly',
+                                        font=('arial', 18, 'bold'), width=19)
+        self.cboAcctOpen['value'] = ('', 'Select an option', 'Yes', 'No')
+        self.cboAcctOpen.current(0)
+        self.cboAcctOpen.grid(row=0, column=1, pady=2)
 
         # ================================================RightFrame1=================================================
 
