@@ -78,6 +78,65 @@ class Rental_Inventory:
             if iExit > 0:
                 root.destroy()
                 return
+        
+        def Reset():
+            self.txtInfo0.delete("1.0", END)
+            self.txtInfo1.delete("1.0", END)
+            self.txtInfo2.delete("1.0", END)
+            self.txtInfo3.delete("1.0", END)
+            self.txtReceipt.delete("1.0", END)
+
+            self.AcctOpen.set("")
+            self.AppDate.set("")
+            self.NextCreditReview.set("")
+            self.LastCreditReview.set("")
+            self.DateRev.set("")
+            self.ProdCode.set("")
+            self.ProdType.set("")
+            self.NoDays.set("")
+            self.CostPDay.set("")
+            self.CreLimit.set("")
+            self.CreCheck.set("")
+            self.SettDueDay.set("")
+            self.PaymentD.set("")
+            self.Discount.set("")
+            self.Deposit.set("")
+            self.PayDueDay.set("")
+            self.PaymentM.set("")
+            self.var1.set(0)
+            self.var2.set(0)
+            self.var3.set(0)
+            self.var4.set(0)
+            self.Tax.set("")
+            self.SubTotal.set("")
+            self.Total.set("")
+            return
+        
+        def checkCredit():
+            if (self.var1.get() == 1):
+                self.txtInfo0.insert(END, "Customer's Check Credit Approved")
+            elif (self.var1.get() == 0):
+                self.txtInfo0.delete("1.0", END)
+
+        def TermAgreed():
+            if (self.var1.get() == 1):
+                self.txtInfo1.insert(END, "Term Agreed")
+            elif (self.var1.get() == 0):
+                self.txtInfo1.delete("1.0", END)
+
+        def AcctOnHold():
+            if (self.var1.get() == 1):
+                self.txtInfo2.insert(END, "Customer's Account On Hold")
+            elif (self.var1.get() == 0):
+                self.txtInfo2.delete("1.0", END)
+
+        def RestrictedMails():
+            if (self.var1.get() == 1):
+                self.txtInfo3.insert(END, "Restricted Mails for Customer")
+            elif (self.var1.get() == 0):
+                self.txtInfo3.delete("1.0", END)
+                        
+            
 
         # ================================================RightFrame0=================================================
         
@@ -87,7 +146,7 @@ class Rental_Inventory:
         
         self.cboAcctOpen = ttk.Combobox(RightFrame0, textvariable=self.AcctOpen, state='readonly',
                                         font=('arial', 18, 'bold'), width=19)
-        self.cboAcctOpen['values'] = ('', 'Select an option', 'Yes', 'No')
+        self.cboAcctOpen['values'] = ( 'Select an option', 'Yes', 'No')
         self.cboAcctOpen.current(0)
         self.cboAcctOpen.grid(row=0, column=1, pady=2)
 
@@ -97,7 +156,7 @@ class Rental_Inventory:
        
         self.cboNCreR = ttk.Combobox(RightFrame0, textvariable=self.NextCreditReview, state='readonly',
                                         font=('arial', 18, 'bold'), width=19)
-        self.cboNCreR['values'] = ('', 'Select an option', 'Yes', 'No')
+        self.cboNCreR['values'] = ('Select an option', 'Yes', 'No')
         self.cboNCreR.current(0)
         self.cboNCreR.grid(row=2, column=1, pady=2)
 
@@ -107,7 +166,7 @@ class Rental_Inventory:
         
         self.cboLCreR = ttk.Combobox(RightFrame0, textvariable=self.LastCreditReview, state='readonly',
                                         font=('arial', 18, 'bold'), width=19)
-        self.cboLCreR['values'] = ('', 'Select an option', 'Yes', 'No')
+        self.cboLCreR['values'] = ('Select an option', 'Yes', 'No')
         self.cboLCreR.current(0)
         self.cboLCreR.grid(row=3, column=1, pady=2)
 
@@ -117,12 +176,12 @@ class Rental_Inventory:
         
         self.cboDateRev = ttk.Combobox(RightFrame0, textvariable=self.DateRev, state='readonly',
                                         font=('arial', 18, 'bold'), width=19)
-        self.cboDateRev['values'] = ('', 'Select an option', 'Yes', 'No')
+        self.cboDateRev['values'] = ('Select an option', 'Yes', 'No')
         self.cboDateRev.current(0)
         self.cboDateRev.grid(row=4, column=1, pady=2)
 
         # ================================================RightFrame1=================================================
-        self.txtReceipt = Text(RightFrame1, pady=2, height=14, width=71, font=('arial', 9, 'bold'))
+        self.txtReceipt = Text(RightFrame1, pady=2, height=18, width=71, font=('arial', 9, 'bold'))
         self.txtReceipt.grid(row=0, column=0, pady=2)
 
         # ================================================RightFrame2=================================================
@@ -148,12 +207,12 @@ class Rental_Inventory:
         self.txtTotal.grid(row=2, column=1, pady=1, padx=4)
 
         #==================================LeftFrame 0========================================
-        self.lblProdType = Label(LeftFrame0, font=('arial', 18, 'bold'), text="Product Type:", padx=2, pady=16, bg="gainsboro")
+        self.lblProdType = Label(LeftFrame0, font=('arial', 17, 'bold'), text="Product Type:", padx=2, pady=16, bg="gainsboro")
         self.lblProdType.grid(row=0, column=0, sticky=W)
 
         self.cboProdType=ttk.Combobox(LeftFrame0, textvariable=self.ProdType, state='readonly', 
                                     font=('arial', 18, 'bold'), width=12)
-        self.cboProdType['value'] = ('', 'Car', 'Van', 'Minibus', 'Truck')
+        self.cboProdType['value'] = ( 'Select','Car', 'Van', 'Minibus', 'Truck')
         self.cboProdType.current(0)
         self.cboProdType.grid(row=0, column=1)
 
@@ -162,7 +221,7 @@ class Rental_Inventory:
 
         self.cboNoDays=ttk.Combobox(LeftFrame0, textvariable=self.NoDays, state='readonly',
                                     font=('arial', 18, 'bold'), width=12)
-        self.cboNoDays['value'] = ('0', '1-30', '31-90', '91-270', '271-365')
+        self.cboNoDays['value'] = ('Select','0', '1-30', '31-90', '91-270', '271-365')
         self.cboNoDays.current(0)
         self.cboNoDays.grid(row=0, column=3)
 
@@ -185,7 +244,7 @@ class Rental_Inventory:
 
         self.cboCreLimit=ttk.Combobox(LeftFrame1, textvariable=self.CreLimit, state='readonly', 
                                     font=('arial', 18, 'bold'), width=12)
-        self.cboCreLimit['value']=('', 'Select an option', '£150', '£200', '£250', '£300')
+        self.cboCreLimit['value']=('Select', '£150', '£200', '£250', '£300')
         self.cboCreLimit.current(0)
         self.cboCreLimit.grid(row=0, column=1, pady=2)
 
@@ -194,7 +253,7 @@ class Rental_Inventory:
 
         self.cboCreCheck=ttk.Combobox(LeftFrame1, textvariable=self.CreCheck, state='readonly',
                                     font=('arial', 18, 'bold'), width=10)
-        self.cboCreCheck['value']=('', 'Select an option', 'Yes', 'No')
+        self.cboCreCheck['value']=('Select', 'Yes', 'No')
         self.cboCreCheck.current(0)
         self.cboCreCheck.grid(row=0, column=3, pady=2)
 
@@ -210,7 +269,7 @@ class Rental_Inventory:
 
         self.cboPaymentD=ttk.Combobox(LeftFrame1, textvariable=self.PaymentD, state='readonly', 
                               font=('arial', 18, 'bold'), width=10)
-        self.cboPaymentD['value']=('', 'Select an option', 'Yes', 'No')
+        self.cboPaymentD['value']=('Select', 'Yes', 'No')
         self.cboPaymentD.current(0)
         self.cboPaymentD.grid(row=1, column=3, pady=2)
 
@@ -219,7 +278,7 @@ class Rental_Inventory:
 
         self.cboDiscount=ttk.Combobox(LeftFrame1, textvariable=self.Discount, state='readonly', 
                                     font=('arial', 18, 'bold'), width=12)
-        self.cboDiscount['value']=('0','5','10','15', '20')
+        self.cboDiscount['value']=('Select','0','5','10','15', '20')
         self.cboDiscount.current(0)
         self.cboDiscount.grid(row=2, column=1, pady=2)
 
@@ -228,7 +287,7 @@ class Rental_Inventory:
 
         self.cboDeposit=ttk.Combobox(LeftFrame1, textvariable=self.Deposit, state='readonly', 
                                     font=('arial', 18, 'bold'), width=10)
-        self.cboDeposit['value']=('', 'Select an option', 'Yes', 'No')
+        self.cboDeposit['value']=('Select','Yes', 'No')
         self.cboDeposit.current(0)
         self.cboDeposit.grid(row=2, column=3, pady=2)
 
@@ -243,7 +302,7 @@ class Rental_Inventory:
         
         self.cboPaymentM=ttk.Combobox(LeftFrame1, textvariable=self.PaymentM, state='readonly',
                               font=('arial', 18, 'bold'), width=10)
-        self.cboPaymentM['value']=('', 'Select an option', 'Cash', 'Visa Card', 'Master Card')
+        self.cboPaymentM['value']=('Select','Cash', 'Visa Card', 'Master Card')
         self.cboPaymentM.current(0)
         self.cboPaymentM.grid(row=3, column=3, pady=2)
 
@@ -257,17 +316,17 @@ class Rental_Inventory:
          # ================================================LeftFrame2LL==================================================
 
         self.chkCheckCredit = Checkbutton(LeftFrame2LL, text="Check Credit ", variable=self.var1, onvalue=1, offvalue=0,
-                                        font=('arial', 16, 'bold'), bg="gainsboro").grid(row=0, sticky=W)
+                                        font=('arial', 16, 'bold'), bg="gainsboro",command=checkCredit).grid(row=0, sticky=W)
 
         self.chkTermAgreed = Checkbutton(LeftFrame2LL, text="Term Agreed ", variable=self.var2, onvalue=1, offvalue=0,
-                                        font=('arial', 16, 'bold'), bg="gainsboro").grid(row=1, sticky=W)
+                                        font=('arial', 16, 'bold'), bg="gainsboro",command=TermAgreed).grid(row=1, sticky=W)
 
         self.chkAccountOnHold = Checkbutton(LeftFrame2LL, text="Account On Hold ", variable=self.var3, onvalue=1, offvalue=0,
-                                        font=('arial', 16, 'bold'), bg="gainsboro").grid(row=2, sticky=W)
+                                        font=('arial', 16, 'bold'), bg="gainsboro" ,command=AcctOnHold).grid(row=2, sticky=W)
 
         self.chkRestrictMailing = Checkbutton(LeftFrame2LL, text="Restrict Mailing ", variable=self.var4, onvalue=1, offvalue=0,
-                                            font=('arial', 16, 'bold'), bg="gainsboro").grid(row=3, sticky=W)
-        
+                                            font=('arial', 16, 'bold'), bg="gainsboro" ,command=RestrictedMails).grid(row=3, sticky=W)
+
         # ========================LeftFrame2LR==========================
         self.txtInfo0 = Text(LeftFrame2LR, height=2, width=63, font=('arial', 9, 'bold'))
         self.txtInfo0.grid(row=0, column=0, pady=2)
@@ -287,7 +346,7 @@ class Rental_Inventory:
                             bg="gainsboro", text="Total").grid(row=0, column=0)
 
         self.btnReset = Button(LeftFrame3, padx=33, pady=2, bd=4, fg="black", font=('arial', 20, 'bold'), width=9, height=2,
-                            bg="gainsboro", text="Reset").grid(row=0, column=1)
+                            bg="gainsboro", text="Reset",command=Reset).grid(row=0, column=1)
 
         self.btnExit = Button(LeftFrame3, padx=34, pady=2, bd=4, fg="black", font=('arial', 20, 'bold'), width=9, height=2,
                             bg="gainsboro", text="Exit",command=iExit).grid(row=0, column=2)
