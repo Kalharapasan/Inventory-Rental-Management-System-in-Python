@@ -4,6 +4,7 @@ import random
 # import tkinter.messagebox # This import is redundant if 'from tkinter import messagebox' is also used
 from tkinter import messagebox
 import datetime
+import tkinter
 
 class Rental_Inventory:
     def __init__(self, root):
@@ -71,6 +72,12 @@ class Rental_Inventory:
         self.SubTotal = StringVar() # Made self.SubTotal
         self.Total = StringVar() # Made self.Total
         self.Receipt_Ref = StringVar()
+        
+        def iExit():
+            iExit = tkinter.messagebox.askyesno("Inventory Rental System", "Confirm if you want to exit")
+            if iExit > 0:
+                root.destroy()
+                return
 
         # ================================================RightFrame0=================================================
         
@@ -283,7 +290,7 @@ class Rental_Inventory:
                             bg="gainsboro", text="Reset").grid(row=0, column=1)
 
         self.btnExit = Button(LeftFrame3, padx=34, pady=2, bd=4, fg="black", font=('arial', 20, 'bold'), width=9, height=2,
-                            bg="gainsboro", text="Exit").grid(row=0, column=2)
+                            bg="gainsboro", text="Exit",command=iExit).grid(row=0, column=2)
 
 
 if __name__=='__main__':
