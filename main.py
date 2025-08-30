@@ -173,6 +173,73 @@ class Rental_Inventory:
                             fg="black", width=14, justify=LEFT).grid(row=1, column=3)
 
         # ================================================LeftFrame1==================================================
+        
+        self.lblCreLimit=Label(LeftFrame1, font=('arial', 18, 'bold'), text="Credit Limit:",padx=2,pady=2, bg="gainsboro")
+        self.lblCreLimit.grid(row=0, column=0, sticky=W)
+
+        self.cboCreLimit=ttk.Combobox(LeftFrame1, textvariable=self.CreLimit, state='readonly', 
+                                    font=('arial', 18, 'bold'), width=12)
+        self.cboCreLimit['value']=('', 'Select an option', '£150', '£200', '£250', '£300')
+        self.cboCreLimit.current(0)
+        self.cboCreLimit.grid(row=0, column=1, pady=2)
+
+        self.lblCreCheck=Label(LeftFrame1, font=('arial', 18, 'bold'), text="Credit Check:",padx=2,pady=2, bg="gainsboro")
+        self.lblCreCheck.grid(row=0, column=2, sticky=W)
+
+        self.cboCreCheck=ttk.Combobox(LeftFrame1, textvariable=self.CreCheck, state='readonly',
+                                    font=('arial', 18, 'bold'), width=10)
+        self.cboCreCheck['value']=('', 'Select an option', 'Yes', 'No')
+        self.cboCreCheck.current(0)
+        self.cboCreCheck.grid(row=0, column=3, pady=2)
+
+        self.lblSettDueDate=Label(LeftFrame1, font=('arial', 18, 'bold'), text="Sett. Due:",padx=2,pady=2, bg="gainsboro")
+        self.lblSettDueDate.grid(row=1, column=0, sticky=W)
+
+        self.txtSettDueDate=Entry(LeftFrame1, textvariable=self.SettDueDay, font=('arial',16,'bold'), bd=2,
+                                fg="black", width=14, justify=LEFT).grid(row=1,column=1)
+
+        self.lblPaymentD=Label(LeftFrame1, font=('arial', 18, 'bold'), text="Payment Due:",padx=1,pady=2, bg="gainsboro")
+        self.lblPaymentD.grid(row=1, column=2, sticky=W)
+        
+
+        self.cboPaymentD=ttk.Combobox(LeftFrame1, textvariable=self.PaymentD, state='readonly', 
+                              font=('arial', 18, 'bold'), width=10)
+        self.cboPaymentD['value']=('', 'Select an option', 'Yes', 'No')
+        self.cboPaymentD.current(0)
+        self.cboPaymentD.grid(row=1, column=3, pady=2)
+
+        self.lblDiscount = Label(LeftFrame1, font=('arial', 18, 'bold'), text="Discount:",padx=1,pady=2, bg="gainsboro")
+        self.lblDiscount.grid(row=2, column=0, sticky=W)
+
+        self.cboDiscount=ttk.Combobox(LeftFrame1, textvariable=self.Discount, state='readonly', 
+                                    font=('arial', 18, 'bold'), width=12)
+        self.cboDiscount['value']=('0','5','10','15', '20')
+        self.cboDiscount.current(0)
+        self.cboDiscount.grid(row=2, column=1, pady=2)
+
+        self.lblDeposit = Label(LeftFrame1, font=('arial', 18, 'bold'), text="Deposit:",padx=1,pady=2, bg="gainsboro")
+        self.lblDeposit.grid(row=2, column=2, sticky=W)
+
+        self.cboDeposit=ttk.Combobox(LeftFrame1, textvariable=self.Deposit, state='readonly', 
+                                    font=('arial', 18, 'bold'), width=10)
+        self.cboDeposit['value']=('', 'Select an option', 'Yes', 'No')
+        self.cboDeposit.current(0)
+        self.cboDeposit.grid(row=2, column=3, pady=2)
+
+        self.lblPayDueDateDay = Label(LeftFrame1, font=('arial', 18, 'bold'), text="Pay Day Due:",padx=1,pady=2, bg="gainsboro")
+        self.lblPayDueDateDay.grid(row=3, column=0, sticky=W)
+
+        self.txtPayDueDateDay=Entry(LeftFrame1, textvariable=self.PayDueDay, font=('arial',16,'bold'), bd=2,
+                                fg="black", width=14, justify=LEFT).grid(row=3,column=1)
+
+        self.lblPaymentM = Label(LeftFrame1, font=('arial', 18, 'bold'), text="Payment Method:",padx=0,pady=4, bg="gainsboro")
+        self.lblPaymentM.grid(row=3, column=2, sticky=W)
+        
+        self.cboPaymentM=ttk.Combobox(LeftFrame1, textvariable=self.PaymentM, state='readonly',
+                              font=('arial', 18, 'bold'), width=10)
+        self.cboPaymentM['value']=('', 'Select an option', 'Cash', 'Visa Card', 'Master Card')
+        self.cboPaymentM.current(0)
+        self.cboPaymentM.grid(row=3, column=3, pady=2)
 
         # ================================================LeftFrame2==================================================
 
