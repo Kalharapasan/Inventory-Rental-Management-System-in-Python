@@ -141,7 +141,36 @@ class Rental_Inventory:
                             fg="black", width=30, justify=LEFT)
         self.txtTotal.grid(row=2, column=1, pady=1, padx=4)
 
-        # ================================================LeftFrame0==================================================
+        #==================================LeftFrame 0========================================
+        self.lblProdType = Label(LeftFrame0, font=('arial', 18, 'bold'), text="Product Type:", padx=2, pady=16, bg="gainsboro")
+        self.lblProdType.grid(row=0, column=0, sticky=W)
+
+        self.cboProdType=ttk.Combobox(LeftFrame0, textvariable=self.ProdType, state='readonly', 
+                                    font=('arial', 18, 'bold'), width=12)
+        self.cboProdType['value'] = ('', 'Car', 'Van', 'Minibus', 'Truck')
+        self.cboProdType.current(0)
+        self.cboProdType.grid(row=0, column=1)
+
+        self.lblNoDays = Label(LeftFrame0, font=('arial', 18, 'bold'), text="No of Days:", padx=2, pady=2, bg="gainsboro")
+        self.lblNoDays.grid(row=0, column=2, sticky=W)
+
+        self.cboNoDays=ttk.Combobox(LeftFrame0, textvariable=self.NoDays, state='readonly',
+                                    font=('arial', 18, 'bold'), width=12)
+        self.cboNoDays['value'] = ('0', '1-30', '31-90', '91-270', '271-365')
+        self.cboNoDays.current(0)
+        self.cboNoDays.grid(row=0, column=3)
+
+        self.lblProdCode = Label(LeftFrame0, font=('arial', 16, 'bold'), text="Product Code:", padx=1, pady=16, bg="gainsboro")
+        self.lblProdCode.grid(row=1, column=0, sticky=W)
+
+        self.txtProdCode=Entry(LeftFrame0, textvariable=self.ProdCode, font=('arial', 16, 'bold'), bd=8,
+                            fg="black", width=14, justify=LEFT).grid(row=1, column=1)
+
+        self.lblProdCode = Label(LeftFrame0, font=('arial', 16, 'bold'), text="Product Code:", padx=1, pady=2, bg="gainsboro")
+        self.lblProdCode.grid(row=1, column=2, sticky=W)
+
+        self.txtCostPDay=Entry(LeftFrame0, textvariable=self.CostPDay, font=('arial', 16, 'bold'), bd=8,
+                            fg="black", width=14, justify=LEFT).grid(row=1, column=3)
 
         # ================================================LeftFrame1==================================================
 
