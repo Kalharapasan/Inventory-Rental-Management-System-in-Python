@@ -261,8 +261,30 @@ class Rental_Inventory:
 
         self.chkRestrictMailing = Checkbutton(LeftFrame2LL, text="Restrict Mailing ", variable=self.var4, onvalue=1, offvalue=0,
                                             font=('arial', 16, 'bold'), bg="gainsboro").grid(row=3, sticky=W)
+        
+        # ========================LeftFrame2LR==========================
+        self.txtInfo0 = Text(LeftFrame2LR, height=2, width=63, font=('arial', 9, 'bold'))
+        self.txtInfo0.grid(row=0, column=0, pady=2)
 
-        # ================================================LeftFrame3==================================================
+        self.txtInfo1 = Text(LeftFrame2LR, height=2, width=63, font=('arial', 9, 'bold'))
+        self.txtInfo1.grid(row=1, column=0, pady=2)
+
+        self.txtInfo2 = Text(LeftFrame2LR, height=2, width=63, font=('arial', 9, 'bold'))
+        self.txtInfo2.grid(row=2, column=0, pady=2)
+
+        self.txtInfo3 = Text(LeftFrame2LR, height=2, width=63, font=('arial', 9, 'bold'))
+        self.txtInfo3.grid(row=3, column=0, pady=2)
+
+
+        # ========================LeftFrame3===============================================================================
+        self.btnTotal = Button(LeftFrame3, padx=33, pady=2, bd=4, fg="black", font=('arial', 20, 'bold'), width=9, height=2,
+                            bg="gainsboro", text="Total").grid(row=0, column=0)
+
+        self.btnReset = Button(LeftFrame3, padx=33, pady=2, bd=4, fg="black", font=('arial', 20, 'bold'), width=9, height=2,
+                            bg="gainsboro", text="Reset").grid(row=0, column=1)
+
+        self.btnExit = Button(LeftFrame3, padx=34, pady=2, bd=4, fg="black", font=('arial', 20, 'bold'), width=9, height=2,
+                            bg="gainsboro", text="Exit").grid(row=0, column=2)
 
 
 if __name__=='__main__':
