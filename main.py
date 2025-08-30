@@ -136,6 +136,74 @@ class Rental_Inventory:
             elif (self.var1.get() == 0):
                 self.txtInfo3.delete("1.0", END)
                         
+        
+        def Product(evt):
+            values = str(self.cboProdType.get())
+            pType = values
+            if pType == "Car":
+                self.ProdCode.set("CAR452")
+                self.CostPDay.set("£12")
+                self.CreCheck.set("No")
+                self.SettDueDay.set("12")
+                self.PaymentD.set("No")
+                self.Deposit.set("No")
+                self.PaymentM.set("Cash")
+                self.PayDueDay.set("15")
+                self.PaymentM.set("Cash")
+
+                n = float(self.LastCreditReview.get())
+                s = float(self.SettDueDay.get())
+                price = (n * s)
+                TC = "£",str('%.2f'% (price))
+                self.PayDueDay.set(TC)
+            
+            elif pType == "Van":
+                self.ProdCode.set("VAN775")
+                self.CostPDay.set("£19")
+                self.CreCheck.set("No")
+                self.SettDueDay.set("19")
+                self.PaymentD.set("No")
+                self.Deposit.set("No")
+                self.PayDueDay.set("19")
+                self.PaymentM.set("Cash")
+
+                n = float(self.LastCreditReview.get())
+                s = float(self.SettDueDay.get())
+                price = (n * s)
+                TC = "£" + str('%.2f' % (price))
+                self.PayDueDay.set(TC)
+                
+            elif pType == "Minibus":
+                self.ProdCode.set("MIN334")
+                self.CostPDay.set("£12")
+                self.CreCheck.set("No")
+                self.SettDueDay.set("12")
+                self.PaymentD.set("No")
+                self.Deposit.set("No")
+                self.PayDueDay.set("19")
+                self.PaymentM.set("Cash")
+                
+                n = float(self.LastCreditReview.get())
+                s = float(self.SettDueDay.get())
+                price = (n * s)
+                TC = "£" + str('%.2f' % (price))
+                self.PayDueDay.set(TC)
+            
+            elif pType == "Truck":
+                self.ProdCode.set("TRK7483")
+                self.CostPDay.set("£15")
+                self.CreCheck.set("No")
+                self.SettDueDay.set("15")
+                self.PaymentD.set("No")
+                self.Deposit.set("No")
+                self.PayDueDay.set("25")
+                self.PaymentM.set("Cash")
+
+                n = float(self.LastCreditReview.get())
+                s = float(self.SettDueDay.get())
+                price = (n * s)
+                TC = "£" + str('%.2f' % (price))
+                self.PayDueDay.set(TC)
             
 
         # ================================================RightFrame0=================================================
@@ -212,6 +280,7 @@ class Rental_Inventory:
 
         self.cboProdType=ttk.Combobox(LeftFrame0, textvariable=self.ProdType, state='readonly', 
                                     font=('arial', 18, 'bold'), width=12)
+        self.cboProdType.bind("<<ComboboxSelected>>", Product)
         self.cboProdType['value'] = ( 'Select','Car', 'Van', 'Minibus', 'Truck')
         self.cboProdType.current(0)
         self.cboProdType.grid(row=0, column=1)
