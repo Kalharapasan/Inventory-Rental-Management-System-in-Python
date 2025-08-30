@@ -204,7 +204,92 @@ class Rental_Inventory:
                 price = (n * s)
                 TC = "£" + str('%.2f' % (price))
                 self.PayDueDay.set(TC)
+        def TotalCost():
+                n = float(self.LastCreditReview.get())
+                s = float(self.SettDueDay.get())
+                price = (n * s)
+                ST = "£" + str('%.2f' % (price))
+                iTax = "£" + str('%.2f' % ((price) * 0.15))
+                self.Tax.set(iTax)
+                self.SubTotal.set(ST)
+                TC = "£" + str('%.2f' % (((price) * 0.15) + price))
+                self.Total.set(TC)
+
+                self.txtReceipt.delete("1.0", END)
+                x = random.randint(10908, 500876)
+                randomRef = str(x)
+                self.Receipt_Ref.set("BILL" + randomRef)
+
+                self.txtReceipt.insert(END, 'Receipt Ref:\t\t\t' + self.Receipt_Ref.get() + '\t\t' + str(self.AppDate.get()) + "\n")
+                self.txtReceipt.insert(END, 'Product Type:\t\t\t' + self.ProdType.get() + "\n")
+                self.txtReceipt.insert(END, 'Product Code:\t\t\t' + self.ProdCode.get() + "\n")
+                self.txtReceipt.insert(END, 'No of Days:\t\t\t' + self.NoDays.get() + "\n")
+                self.txtReceipt.insert(END, 'Account Open:\t\t\t' + self.AcctOpen.get() + "\n")
+                self.txtReceipt.insert(END, 'NextCreditReview:\t\t' + str(self.NextCreditReview.get()) + "\n")
+                self.txtReceipt.insert(END, 'LastCreditReview:\t\t' + str(self.LastCreditReview.get()) + "\n")
+                self.txtReceipt.insert(END, '\nTax:\t\t\t' + self.Tax.get() + "\n")
+                self.txtReceipt.insert(END, '\nSubTotal:\t\t' + str(self.SubTotal.get()) + "\n")
+                self.txtReceipt.insert(END, '\nTotal Cost:\t\t' + str(self.Total.get()))
+        
+        def iDates(evt):
+            values = str(self.cboNoDays.get())
+            NDays = values
+            if NDays == "1-30":
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=30)
+                d3 = (d1 + d2)
+                self.AppDate.set(d1)
+                self.NextCreditReview.set(d3)
+                self.LastCreditReview.set(30)
+                self.DateRev.set(d3)
+
+                self.CreLimit.set("£150")
+                self.Discount.set("5%")
+                self.AcctOpen.set("Yes")
             
+            elif (NDays == "31-90"):
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days =90)
+                d3 = (d1 + d2)
+                self.AppDate.set(d1)
+                self.NextCreditReview.set(d3)
+                self.LastCreditReview.set(90)
+                self.DateRev.set(d3)
+
+                self.CreLimit.set("£200")
+                self.Discount.set("10%")
+                self.AcctOpen.set("Yes")
+            
+            if NDays == "91-270":
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=270)
+                d3 = (d1 + d2)
+                self.AppDate.set(d1)
+                self.NextCreditReview.set(d3)
+                self.LastCreditReview.set(270)
+                self.DateRev.set(d3)
+                self.CreLimit.set("£250")
+                self.Discount.set("15%")
+                self.AcctOpen.set("Yes")
+
+            elif NDays == "271-365":
+                d1 = datetime.date.today()
+                d2 = datetime.timedelta(days=365)
+                d3 = (d1 + d2)
+                self.AppDate.set(d1)
+                self.NextCreditReview.set(d3)
+                self.LastCreditReview.set(365)
+                self.DateRev.set(d3)
+                self.CreLimit.set("£300")
+                self.Discount.set("20%")
+                self.AcctOpen.set("Yes")
+
+            elif NDays == "0":
+                messagebox.showinfo("Zero selected", "You choose zero")
+                Reset()
+                
+            
+
 
         # ================================================RightFrame0=================================================
         
@@ -290,6 +375,7 @@ class Rental_Inventory:
 
         self.cboNoDays=ttk.Combobox(LeftFrame0, textvariable=self.NoDays, state='readonly',
                                     font=('arial', 18, 'bold'), width=12)
+        self.cboNoDays.bind("<<ComboboxSelected>>", iDates)
         self.cboNoDays['value'] = ('Select','0', '1-30', '31-90', '91-270', '271-365')
         self.cboNoDays.current(0)
         self.cboNoDays.grid(row=0, column=3)
@@ -412,7 +498,7 @@ class Rental_Inventory:
 
         # ========================LeftFrame3===============================================================================
         self.btnTotal = Button(LeftFrame3, padx=33, pady=2, bd=4, fg="black", font=('arial', 20, 'bold'), width=9, height=2,
-                            bg="gainsboro", text="Total").grid(row=0, column=0)
+                            bg="gainsboro", text="Total",command=TotalCost).grid(row=0, column=0)
 
         self.btnReset = Button(LeftFrame3, padx=33, pady=2, bd=4, fg="black", font=('arial', 20, 'bold'), width=9, height=2,
                             bg="gainsboro", text="Reset",command=Reset).grid(row=0, column=1)
