@@ -242,6 +242,25 @@ class Rental_Inventory:
         self.cboPaymentM.grid(row=3, column=3, pady=2)
 
         # ================================================LeftFrame2==================================================
+        
+        LeftFrame2LL = Frame(LeftFrame2, bd=5, width=300, height=160, padx=5, bg="gainsboro", relief=RIDGE)
+        LeftFrame2LL.grid(row=0, column=0)
+        LeftFrame2LR = Frame(LeftFrame2, bd=5, width=300, height=160, padx=5, bg="black", relief=RIDGE)
+        LeftFrame2LR.grid(row=0, column=1)
+        
+         # ================================================LeftFrame2LL==================================================
+
+        self.chkCheckCredit = Checkbutton(LeftFrame2LL, text="Check Credit ", variable=self.var1, onvalue=1, offvalue=0,
+                                        font=('arial', 16, 'bold'), bg="gainsboro").grid(row=0, sticky=W)
+
+        self.chkTermAgreed = Checkbutton(LeftFrame2LL, text="Term Agreed ", variable=self.var2, onvalue=1, offvalue=0,
+                                        font=('arial', 16, 'bold'), bg="gainsboro").grid(row=1, sticky=W)
+
+        self.chkAccountOnHold = Checkbutton(LeftFrame2LL, text="Account On Hold ", variable=self.var3, onvalue=1, offvalue=0,
+                                        font=('arial', 16, 'bold'), bg="gainsboro").grid(row=2, sticky=W)
+
+        self.chkRestrictMailing = Checkbutton(LeftFrame2LL, text="Restrict Mailing ", variable=self.var4, onvalue=1, offvalue=0,
+                                            font=('arial', 16, 'bold'), bg="gainsboro").grid(row=3, sticky=W)
 
         # ================================================LeftFrame3==================================================
 
