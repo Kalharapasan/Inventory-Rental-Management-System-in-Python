@@ -18,7 +18,7 @@ A desktop application for managing rental inventory, built with Python and Tkint
 2. Open a terminal in the project directory.
 3. Run the application:
 	```bash
-	python main.py
+	python V0.0.py
 	```
 
 ## Main Files
@@ -32,7 +32,8 @@ A desktop application for managing rental inventory, built with Python and Tkint
 - View receipts and transaction summaries in the right panel
 
 ## Screenshots
-![Sample UI](screenshot.png) <!-- Add a screenshot if available -->
+<img width="1309" height="679" alt="image" src="https://github.com/user-attachments/assets/771b82a1-75a0-4cf7-9a64-27678ebf7b0d" />
+
 
 ## License
 This project is for educational purposes.
